@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Bootstrap link -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!--Bootstrap JS-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!--jQuery link -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <!--CSS-->
+    <link rel="stylesheet" href="/style.css">
+    <script src="/logic.js"></script>
+    <title>Burger</title>
+</head>
+<body>
+    <div class="container">
+        <div class="burger_image">
+
+        </div>
+        <header class="jumbotron">
+            <h1>Burger Time...!</h1>
+        </header>
+
+        <div class="container" >
+            <div class="devouredFalse">
+                {{#each burger}}
+                <div>
+                    <form action="/" method="POST">
+                        <h4>{{burger_name}}</h4>
+                        <button type="submit">Devour</button> 
+                    </form>      
+                </div>
+                {{/each}}
+            </div>
+            <div class="devouredTrue">
+                {{#each burger}}
+                    <div>
+                        <input type="text" disabled>
+                    </div>
+                {{/each}}
+            </div>
+            
+        </div>
+
+        <div class="addBurger">
+            <form action="/burger" method="POST">
+                <label for=""></label>
+                <input type="text" name="burgerName">
+                <br>
+                <button type="submit" class="btn btn-primary">Add Burger</button>
+            </form>
+        </div>
+    </div> 
+</body>
+</html>
