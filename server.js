@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const methodOveride = require("method-override");
 
+
 const PORT = 3000;
 
 const app = express();
@@ -20,10 +21,14 @@ const routes = require("./controllers/burgers_controller");
 
 app.use(express.static("./public"));
 
-app.use("/", routes);
+var db = require("./models"); 
 
+require("./routes/html-routes")(app);
+require("./routes/burger-routes")(app);
 
-app.listen(PORT, function(err){
-    if (err) throw err;
-    console.log("Listening: http://localhost:" + PORT);
+db.sequelize.sync({force:true}).then(function(){
+    app.listen(PORT, function(err){
+        if (err) throw err;
+        console.log("Listening: http://localhost:" + PORT);
+    });    
 });
