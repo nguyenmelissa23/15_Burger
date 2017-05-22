@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "melissa",
-    "password": "mypassword",
-    "database": "burger_db2",
+    "username": "root",
+    "password": "root",
+    "database": "burger_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

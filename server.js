@@ -17,13 +17,13 @@ const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({defaultLayout:"main"}));
 app.set("view engine", "handlebars");
 
-const routes = require("./controllers/burgers_controller");
+// const routes = require("./controllers/burgers_controller");
 
 app.use(express.static("./public"));
 
 var db = require("./models"); 
 
-require("./routes/html-routes")(app);
+// require("./routes/html-routes")(app);
 require("./routes/burger-routes")(app);
 
 db.sequelize.sync({force:true}).then(function(){

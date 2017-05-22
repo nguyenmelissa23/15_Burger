@@ -8,7 +8,7 @@ module.exports = function(app){
             devouredFalse: []
         };
         db.Burger
-            .findALl({})
+            .findAll({})
             .then(function(dbBurger){
             for (var i = 0; i < dbBurger.length; i++){
                 var currentBurger = dbBurger[i];
@@ -23,14 +23,20 @@ module.exports = function(app){
     });
 
     app.post("/addBurger", function(req, res){
-        db.Burger.create(req.body).then(function(dbBurger){
-            // res.json(dbBurger);
-            res.redirect("/");
+        console.log(req.body);
+        var newBurger = {
+            burger_name: req.body.burgerName,
+            devoured: false
+        };
+        db.Burger.create(newBurger).then(function(dbBurger){
+            res.json(dbBurger);
+            // console.log(dbBurger);
+            // res.redirect("/");
         }); 
     });
 
     
-    app.update("/devourBurger", function(req, res){
+    app.post("/devourBurger", function(req, res){
         db.Burger.update({
             devoured: false
         }, {
@@ -38,8 +44,8 @@ module.exports = function(app){
                 burger_name: req.body.burgerName
             }
         }).then(function(dbBurger){
-            // res.json(dbBurger);
-            res.redirect("/");
+            res.json(dbBurger);
+            // res.redirect("/");
         }); 
     });
 };
